@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブラックジャックゲーム</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎰 ブラックジャック</h1>
+        
+        <div class="game-info">
+            <div class="balance-display">
+                <span class="label">残高:</span>
+                <span class="value" id="balance">$100</span>
+            </div>
+            <div class="bet-display">
+                <span class="label">現在のベット:</span>
+                <span class="value" id="current-bet">$0</span>
+            </div>
+        </div>
+
+        <div class="betting-section" id="betting-section">
+            <h2>ベット額を選択</h2>
+            <div class="bet-buttons">
+                <button class="bet-btn" onclick="placeBet(10)">$10</button>
+                <button class="bet-btn" onclick="placeBet(25)">$25</button>
+                <button class="bet-btn" onclick="placeBet(50)">$50</button>
+                <button class="bet-btn" onclick="placeBet(100)">$100</button>
+            </div>
+            <div class="custom-bet">
+                <input type="number" id="custom-bet" placeholder="カスタム金額を入力" min="1" max="1000">
+                <button onclick="placeBetCustom()">ベット</button>
+            </div>
+        </div>
+
+        <div class="game-section" id="game-section" style="display: none;">
+            <div class="dealer-section">
+                <h3>ディーラー</h3>
+                <div class="cards-display" id="dealer-cards"></div>
+                <div class="value-display">
+                    <span id="dealer-value" class="value"></span>
+                </div>
+            </div>
+
+            <div class="player-section">
+                <h3>プレイヤー</h3>
+                <div class="cards-display" id="player-cards"></div>
+                <div class="value-display">
+                    <span id="player-value" class="value"></span>
+                </div>
+            </div>
+
+            <div class="message" id="message"></div>
+
+            <div class="action-buttons" id="action-buttons">
+                <button id="hit-btn" class="action-btn" onclick="hit()">ヒット</button>
+                <button id="stand-btn" class="action-btn" onclick="stand()">スタンド</button>
+            </div>
+
+            <div class="next-round-buttons" id="next-buttons" style="display: none;">
+                <button class="action-btn" onclick="nextRound()">次のラウンド</button>
+            </div>
+        </div>
+
+        <div class="game-over" id="game-over" style="display: none;">
+            <h2>ゲーム終了</h2>
+            <p>残高がなくなりました。ゲームを再開しますか？</p>
+            <button class="action-btn" onclick="resetGame()">新しいゲームを開始</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
