@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ブラックジャック</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <!-- 初期ベット選択画面 -->
+    <div id="betScreen" class="screen active">
+      <div class="title">🎰 Blackjack</div>
+      <div class="info-box">
+        <div class="info-row">
+          <div class="info-label">残高:</div>
+          <div class="info-value">¥<span id="balance-display">1000</span></div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">現在のベット:</div>
+          <div class="info-value">¥<span id="bet-display">0</span></div>
+        </div>
+      </div>
+
+      <div class="bet-section">
+        <p class="bet-label">ベット額を選択</p>
+        <div class="preset-buttons">
+          <button class="preset-btn" data-bet="10">¥10</button>
+          <button class="preset-btn" data-bet="25">¥25</button>
+          <button class="preset-btn" data-bet="50">¥50</button>
+          <button class="preset-btn" data-bet="100">¥100</button>
+        </div>
+        <div class="custom-bet">
+          <input 
+            id="customBet" 
+            type="number" 
+            placeholder="カスタム金額を入力" 
+            min="1"
+          >
+          <button id="betBtn" class="bet-button">ベット</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ゲームプレイ画面 -->
+    <div id="gameScreen" class="screen">
+      <div class="game-header">
+        <div class="header-item">
+          残高: ¥<span id="game-balance">1000</span>
+        </div>
+        <div class="header-item">
+          ベット: ¥<span id="game-bet">0</span>
+        </div>
+      </div>
+
+      <div class="game-content">
+        <div class="hands-container">
+          <div class="hand dealer-hand">
+            <h3>ディーラー</h3>
+            <div id="dealer-cards" class="cards"></div>
+            <div class="total">合計: <span id="dealer-total">0</span></div>
+          </div>
+          <div class="hand player-hand">
+            <h3>プレイヤー</h3>
+            <div id="player-cards" class="cards"></div>
+            <div class="total">合計: <span id="player-total">0</span></div>
+          </div>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="action-buttons">
+          <button id="hitBtn" class="action-btn" disabled>ヒット</button>
+          <button id="standBtn" class="action-btn" disabled>スタンド</button>
+          <button id="nextBtn" class="action-btn" disabled>新しいラウンド</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
